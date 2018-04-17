@@ -5,12 +5,14 @@ import PropTypes from 'prop-types'
 
 export default class Player extends React.Component{
     render(){ 
+        let itemClassName = `item item--position-${this.props.player.rank}`;
         return(
-            <div className="item" key={this.props.player._id}> 
+            <div className={itemClassName} key={this.props.player._id}> 
                 <div className="player">
                     <div>
                         <h3 className="player__name">{this.props.player.name} </h3>
-                        <p className="player__stats">{this.props.player.score} points(s).</p>
+                        <p className="player__stats">
+                         {this.props.player.position} place - {this.props.player.score} points(s).</p>
                     </div>
                 <div className="player__action">
                     <button className="button button--round" onClick={() => Players.update({_id: this.props.player._id},{$inc: {score: -1}})}>-1</button>
